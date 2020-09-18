@@ -1,0 +1,30 @@
+plugins {
+    id 'org.jetbrains.kotlin.jvm' version '1.4.10'
+    id 'application'
+}
+
+group 'org.bdas'
+version '1.0'
+
+repositories {
+    mavenCentral()
+}
+
+mainClassName = "org.bdas.2lab.Main"
+
+jar {
+    manifest {
+        attributes 'Main-Class': mainClassName
+        exclude 'META-INF/*.RSA', 'META-INF/*.SF','META-INF/*.DSA'
+    }
+
+    from { configurations.compileClasspath.collect { it.isDirectory() ? it : zipTree(it) } }
+}
+
+dependencies {
+    implementation "org.jetbrains.kotlin:kotlin-stdlib"
+    compile group: 'org.bouncycastle', name: 'bcpkix-jdk15on', version: '1.66'
+
+}
+
+

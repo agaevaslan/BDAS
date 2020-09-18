@@ -82,7 +82,7 @@ set CMD_LINE_ARGS=%*
 :execute
 @rem Setup the command line
 
-set CLASSPATH=%APP_HOME%\lib\2lab-1.0.jar;%APP_HOME%\lib\kotlin-stdlib-1.4.10.jar;%APP_HOME%\lib\kotlin-stdlib-common-1.4.10.jar;%APP_HOME%\lib\annotations-13.0.jar
+set CLASSPATH=%APP_HOME%\lib\2lab-1.0.jar;%APP_HOME%\lib\bcpkix-jdk15on-1.66.jar;%APP_HOME%\lib\kotlin-stdlib-1.4.10.jar;%APP_HOME%\lib\bcprov-jdk15on-1.66.jar;%APP_HOME%\lib\kotlin-stdlib-common-1.4.10.jar;%APP_HOME%\lib\annotations-13.0.jar
 
 @rem Execute 2lab
 "%JAVA_EXE%" %DEFAULT_JVM_OPTS% %JAVA_OPTS% %2LAB_OPTS%  -classpath "%CLASSPATH%" org.bdas.2lab.Main %CMD_LINE_ARGS%
