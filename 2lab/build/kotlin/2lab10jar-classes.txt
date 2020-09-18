@@ -1,0 +1,1 @@
+/home/aslan/spbstu_5_sem/BDAS/2lab/build/classes/kotlin/main/org/bdas/2lab/Main.class
