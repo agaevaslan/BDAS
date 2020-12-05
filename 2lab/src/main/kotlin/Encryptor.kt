@@ -21,8 +21,8 @@ import kotlin.properties.Delegates
 
 
 class Encryptor() {
-    private var certificate: X509Certificate by Delegates.notNull()
-    private var privateKey: PrivateKey by Delegates.notNull()
+    var certificate: X509Certificate by Delegates.notNull()
+    var privateKey: PrivateKey by Delegates.notNull()
 
     init {
         try {
@@ -47,7 +47,7 @@ class Encryptor() {
         }
     }
 
-    private fun encryptData(data: ByteArray?, encryptionCertificate: X509Certificate?): ByteArray? {
+    fun encryptData(data: ByteArray?, encryptionCertificate: X509Certificate?): ByteArray? {
         var encryptedData: ByteArray? = null;
         if (null != data && null != encryptionCertificate) {
             val cmsEnvelopedDataGenerator = CMSEnvelopedDataGenerator();
@@ -64,7 +64,7 @@ class Encryptor() {
         return encryptedData;
     }
 
-    private fun decryptData(encryptedData: ByteArray?, decryptionKey: PrivateKey?): ByteArray? {
+    fun decryptData(encryptedData: ByteArray?, decryptionKey: PrivateKey?): ByteArray? {
         val decryptedData: ByteArray? = null
         if (null != encryptedData && null != decryptionKey) {
             val envelopedData = CMSEnvelopedData(encryptedData)
@@ -91,7 +91,7 @@ class Encryptor() {
         }
     }
 
-    private fun signData(data: ByteArray?, signingCertificate: X509Certificate, signingKey: PrivateKey?): ByteArray? {
+    fun signData(data: ByteArray?, signingCertificate: X509Certificate, signingKey: PrivateKey?): ByteArray? {
         var signedMessage: ByteArray? = null;
         val certList = ArrayList<X509Certificate>();
         val cmsData = CMSProcessableByteArray(data);
@@ -112,7 +112,7 @@ class Encryptor() {
         return signedMessage;
     }
 
-    private fun verifySignedData(signedData: ByteArray?): Boolean {
+    fun verifySignedData(signedData: ByteArray?): Boolean {
         val inputStream = ByteArrayInputStream(signedData)
         val asnInputStream = ASN1InputStream(inputStream)
         val cmsSignedData = CMSSignedData(
